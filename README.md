@@ -1,11 +1,5 @@
 # SPACR
-Full stack app using NASA API
-
-
-# The largest heading
-## The second largest heading
-###### The smallest heading
-
+Full stack application using NASA API to pull space images and display them with additional user functionality
 
 ## Overview
 SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) and Earth Images [EPIC](https://epic.gsfc.nasa.gov/)

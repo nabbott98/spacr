@@ -58,3 +58,5 @@ Tuesday: Finish backend API
 Wednesday: Start building out Views 
 Thursday: Views
 Friday: Views and bug fixing 
+
+return number of likes as a virtual

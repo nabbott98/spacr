@@ -3,20 +3,20 @@
 <div class="container-md">
     <article>
         <h2>
-            {{ example.title }} -
-            {% if example.ready %}
+            {{ apod.title }} -
+            {% if apod.ready %}
             Ready
             {% else %}
             Not Ready
             {%endif%}
         </h2>
-        <h3>Amount: {{ example.amount }}</h3>
-        <h6>Body: {{ example.body }}</h6>
-        {% if example.owner == userId %}
+        <h3>Amount: {{ apod.amount }}</h3>
+        <h6>Body: {{ apod.body }}</h6>
+        {% if apod.owner == userId %}
         <div class="btn-group">
 
-            <a href="/examples/{{ example.id }}/edit" class="btn btn-primary">Edit</a>
-            <form action="/examples/{{ example.id }}?_method=DELETE" method="POST">
+            <a href="/apods/{{ apod.id }}/edit" class="btn btn-primary">Edit</a>
+            <form action="/apods/{{ apod.id }}?_method=DELETE" method="POST">
                 <input type="submit" value="Delete" class="btn btn-danger">
             </form>
         </div>

@@ -1,27 +1,30 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/examples" method="POST">
+    <form action="/apods" method="POST">
         <fieldset>
             <legend>Create New Example</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
                 name="title" 
-                placeholder="enter example title"
+                placeholder="{{ apod.title }}"
+                value="{{ apod.title }}"
                 class="form-control"
             >
             <label class="form-label">Body:</label>
             <input 
                 type="text" 
                 name="body" 
-                placeholder="enter example body" 
+                placeholder="{{ apod.body }}" 
+                value="{{ apod.body }}" 
                 class="form-control"
             >
             <label class="form-label">Amount:</label>
             <input 
                 type="number" 
-                name="amount" 
+                name="amount"
+                value="{{ apod.amount }}"
                 class="form-control"
             >
             <label class="form-label">Ready:</label>
@@ -29,9 +32,12 @@
                 type="checkbox" 
                 name="ready" 
                 class="form-check-input"
+                {% if apod.ready %}
+                    checked
+                {% endif %}
             >
         </fieldset>
-        <input type="submit" value="Create New Example" class="btn btn-success">
+        <input type="submit" value="Edit Example" class="btn btn-success">
     </form>
 </div>
 {% endblock %}

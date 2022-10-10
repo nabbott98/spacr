@@ -2,35 +2,40 @@
 Full stack application using NASA API to pull space images and display them with additional user functionality
 
 ## Overview
-SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) and Earth Images [EPIC](https://epic.gsfc.nasa.gov/)
+SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3 and  as a stretch goal Earth Images [EPIC](https://epic.gsfc.nasa.gov/)
 [NASA Open API](https://api.nasa.gov/)
 Users will see the 20 most recent pictures and be able to store them in the database by favoriting them
 
+
+
 ## Technologies used
-MongoDB - Database
+MongoDB - NoSQL Database
 Mongoose - Object modeling for mongodb
 Express - Route controller
 Liquid - View templating Engine
-Bootstrap - Styling engine
+Bootstrap - Styling framework
 HTML
 CSS
 JS
 
 ## Technical Requirements
- Markup : - Models
-              - User
-              - Daily picture IMG
-                  - Comment
-              - EPIC IMG - potential addition
-                  - Comment
-          - Incorporated API's
-              - NASA APOD API
-              - NASA EPIC API - potential addition
+Models
+  - User
+  - Daily picture IMG
+    - Comment
+  - EPIC IMG - stretch goal
+    - Comment
+
+
+Incorporated API's
+- NASA APOD API
+- NASA EPIC API - stretch goal
+
 
 ## User Stories
 As a user, I want the ability to... 
   - sign up.
-  - sign in. 
+  - sign in. https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3
   - change my password. 
   - sign out. 
   - view NASA Astronomy Picture of the Day images. 

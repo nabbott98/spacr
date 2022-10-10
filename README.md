@@ -46,3 +46,10 @@ As a user, I want the ability to...
 ![SPACR Wireframe](/planning/SPACR-wireframe.png)
 ## Entity Relationship Diagrams
 ![SPACR ERD](/planning/ERD.png)
+
+## Weekly Schedule
+Monday: Build out database models, play around with NASA api to get more comfortable
+Tuesday: Finish backend API
+Wednesday: Start building out Views 
+Thursday: Views
+Friday: Views and bug fixing 

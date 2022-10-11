@@ -9,7 +9,7 @@ const axios = require('axios')
 ////////////////////////////////////////
 //  Import Models
 ////////////////////////////////////////
-const Apod = require('../models/apodModel')
+const Apod = require('../models/apodModel.js')
 
 // ////////////////////////////////////////
 // //  Router Middleware
@@ -67,6 +67,9 @@ router.post("/", (req, res) => {
     // here, we'll get something called a request body
     // inside this function, that will be referred to as req.body
     // we'll use the mongoose model method `create` to make a new APOD document
+    console.log('req.body', req.body)
+
+    let requestData = req.body
     Apod.create(req.body)
         .then(apod => {
             // send the user a '201 created' response, along with the new apod

@@ -17,9 +17,9 @@ const apodSchema = new Schema(
 		explanation: String,
 		hdurl: String,
 		media_type: String,
-		service_version: String,
 		title: String,
 		url: String,
+		favorite: Boolean,
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',

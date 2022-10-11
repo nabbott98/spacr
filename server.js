@@ -1,37 +1,41 @@
 // command center for our app
 const express = require('express')
-const app = express()
-const PORT = 3000
+const app = require("liquid-express-views")(express())
+// const app = express()
+app.use(express.json()) // comment this out if I run into liquid issues
+const middleware = require('./utils/middleware')
+middleware(app)
+const reqLogger = require('./utils/requestLogger')
 
 const playerRouter = require('./controllers/apod')
+
+
 
 
 // .get - is going to be only for GET requests
 // `/` - is the path for this GET request
 // req - is the request coming in
 // res - is the response we need to construct to send out
-app.get('/', (req, res) => {
-    res.send('hello world')
-})
+// app.get('/', (req, res) => {
+//     res.send('hello world')
+// })
 
 // localhost:3000/players
+app.use(reqLogger)
 app.use('/apod', playerRouter)
 // error handlings app.use
 
 // ALWAYS WANT TO HAVE OUR LISTENER AS THE LAST THING
 // setting up the listener - this will listen for any request coming in to localhost:3000
 // callback function so see that it is running
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
-})
-
+const PORT = process.env.PORT
+app.listen(PORT, () => console.log(`Now listening to the sweet sounds of port: ${PORT}`))
 
 // ////////////////////
 // //  Dependencies  //
 // ////////////////////
 // require("dotenv").config() // make env variables available
 // const express = require("express")
-// const middleware = require('./utils/middleware')
 // const ApodRouter = require('./controllers/apod')
 // const UserRouter = require('./controllers/user')
 // const User = require("./models/user")
@@ -43,7 +47,6 @@ app.listen(PORT, () => {
 // //////////////////////////////
 // const app = require("liquid-express-views")(express())
 
-// middleware(app)
 
 // ////////////////////
 // //    Routes      //

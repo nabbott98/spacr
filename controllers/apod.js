@@ -11,28 +11,29 @@ const axios = require('axios')
 ////////////////////////////////////////
 const Apod = require('../models/apodModel')
 
-////////////////////////////////////////
-//  Router Middleware
-////////////////////////////////////////
-// Router Middleware
-// Authorization middleware
-// If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
-router.use((req, res, next) => {
-	// checking the loggedIn boolean of our session
-	if (req.session.loggedIn) {
-		// if they're logged in, go to the next thing(thats the controller)
-		next()
-	} else {
-		// if they're not logged in, send them to the login page
-		res.redirect('/auth/login')
-	}
-})
+// ////////////////////////////////////////
+// //  Router Middleware
+// ////////////////////////////////////////
+// // Router Middleware
+// // Authorization middleware
+// // If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
+// router.use((req, res, next) => {
+// 	// checking the loggedIn boolean of our session
+// 	if (req.session.loggedIn) {
+// 		// if they're logged in, go to the next thing(thats the controller)
+// 		next()
+// 	} else {
+// 		// if they're not logged in, send them to the login page
+// 		res.redirect('/auth/login')
+// 	}
+// })
 
 
 ////////////////////////////////////////
 //  Routes
 ////////////////////////////////////////
-router.get('/', (req, res) => {
+// Get request from NASA API
+router.get('/nasa', (req, res) => {
     axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3')
     .then(apodJson => {
         console.log(apodJson.data)
@@ -45,7 +46,106 @@ router.get('/', (req, res) => {
 
 })
 
+// GET request
+// index route -> shows all instances of a document in the db
+router.get("/", (req, res) => {
+    // console.log("this is the request", req)
+    // in our index route, we want to use mongoose model methods to get our data
+    Apod.find({})
+        .then(apods => {
+            // this is fine for initial testing
+            // res.send(apods)
+            // this the preferred method for APIs
+            res.json({ apods: apods })
+        })
+        .catch(err => console.log(err))
+})
+
+// POST request
+// create route -> gives the ability to create new apods
+router.post("/", (req, res) => {
+    // here, we'll get something called a request body
+    // inside this function, that will be referred to as req.body
+    // we'll use the mongoose model method `create` to make a new APOD document
+    Apod.create(req.body)
+        .then(apod => {
+            // send the user a '201 created' response, along with the new apod
+            res.status(201).json({ apod: apod.toObject() })
+        })
+        .catch(error => console.log(error))
+})
+
+// PUT request
+// update route -> updates a specific apod
+router.put("/:id", (req, res) => {
+    // console.log("I hit the update route", req.params.id)
+    const id = req.params.id
+    
+    // for now, we'll use a simple mongoose model method, eventually we'll update this(and all) routes and we'll use a different method
+    // we're using findByIdAndUpdate, which needs three arguments
+    // it needs an id, it needs the req.body, and whether the info is new
+    Apod.findByIdAndUpdate(id, req.body, { new: true })
+        .then(apod => {
+            console.log('the apod from update', apod)
+            // update success is called '204 - no content'
+            res.sendStatus(204)
+        })
+        .catch(err => console.log(err))
+})
+
+// DELETE request
+// destroy route -> finds and deletes a single resource(apod)
+router.delete("/:id", (req, res) => {
+    // grab the id from the request
+    const id = req.params.id
+    // find and delete the apod
+    Apod.findByIdAndRemove(id)
+        // send a 204 if successful
+        .then(() => {
+            res.sendStatus(204)
+        })
+        // send the error if not
+        .catch(err => res.json(err))
+})
+
+// SHOW request
+// read route -> finds and displays a single resource
+router.get("/:id", (req, res) => {
+    const id = req.params.id
+
+    Apod.findById(id)
+        .then(apod => {
+            res.json({ apod: apod })
+        })
+        .catch(err => console.log(err))
+})
+
+// // index that shows only the user's apods
+// router.get('/mine', (req, res) => {
+//     // destructure user info from req.session
+//     const { username, userId, loggedIn } = req.session
+// 	Apod.find({ owner: userId })
+// 		.then(apods => {
+// 			res.render('apods/index', { apods, username, loggedIn })
+// 		})
+// 		.catch(error => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
+
+//////////////////////////////////////////
+// Export the Router
+//////////////////////////////////////////
 module.exports = router
+
+
+
+
+
+
+//////////////////////////////////////////
+// Example routes
+//////////////////////////////////////////
 
 // // index ALL
 // router.get('/', (req, res) => {

@@ -17,6 +17,7 @@ const apodSchema = new Schema(
 		explanation: String,
 		hdurl: String,
 		media_type: String,
+		service_version: String,
 		title: String,
 		url: String,
 		owner: {

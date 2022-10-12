@@ -33,11 +33,41 @@ const Apod = require('../models/apodModel.js')
 //  Routes
 ////////////////////////////////////////
 // Get request from NASA API
-router.get('/nasa', (req, res) => {
-    axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=10')
+// TODAY APOD
+router.get('/today', (req, res) => {
+    axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3')
     .then(apodJson => {
         console.log(apodJson.data)
         res.send(apodJson.data)
+    })
+    // .then(() => res.send('done'))
+    .catch(() => {
+        res.status(500).send('Something went wrong :(')
+    })
+
+})
+
+// RANDOM APOD
+router.get('/random', (req, res) => {
+    axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=1')
+        .then(apodJson => {
+            console.log(apodJson.data[0])
+            res.send(apodJson.data[0])
+        })
+        // .then(() => res.send('done'))
+        .catch(() => {
+            res.status(500).send('Something went wrong :(')
+        })
+
+})
+
+// DATE SPECIFIC       date in form of yyyy-mm-dd
+router.get('/date/:id', (req, res) => {
+    const id = req.params.id
+    axios(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${id}&end_date=${id}`)
+    .then(apodJson => {
+        console.log(apodJson.data[0])
+        res.send(apodJson.data[0])
     })
     // .then(() => res.send('done'))
     .catch(() => {

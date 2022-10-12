@@ -2,15 +2,15 @@
 {% block content %}
 <div class="container-md">
     <article>
-        <h1>{{ apodJson.data[0].title }}</h1>
-        <img class="img-fluid" src="{{apodJson.data[0].hdurl}}" alt="{{apodJson.data[0].title}}">
+        <h1>{{ apod.title }}</h1>
+        <img class="img-fluid" src="{{apod.hdurl}}" alt="{{apod.title}}">
 
         {%- comment -%} <h3>Amount: {{ apod.amount }}</h3> {%- endcomment -%}
-        <h6>Date: {{apodJson.data[0].date}}</h6>
-        <p>{{apodJson.data[0].explanation}}</p>
+        <h6>Date: {{apod.date}}</h6>
+        <p>{{apod.explanation}}</p>
         
-        {% if apodJson.data[0].copyright %}
-            <h6>Copyright: {{apodJson.data[0].copyright}}</h6>
+        {% if apod.copyright %}
+            <h6>Copyright: {{apod.copyright}}</h6>
         {% endif %}
 
 

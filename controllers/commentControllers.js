@@ -2,7 +2,7 @@
 // Import Dependencies
 ////////////////////////////////////////
 const express = require("express")
-const Apod = require("../models/apod")
+const Apod = require("../models/apodModel")
 
 /////////////////////////////////////////
 // Create Router

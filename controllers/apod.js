@@ -14,19 +14,19 @@ const Apod = require('../models/apodModel.js')
 // ////////////////////////////////////////
 // //  Router Middleware
 // ////////////////////////////////////////
-// // Router Middleware
-// // Authorization middleware
-// // If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
-// router.use((req, res, next) => {
-// 	// checking the loggedIn boolean of our session
-// 	if (req.session.loggedIn) {
-// 		// if they're logged in, go to the next thing(thats the controller)
-// 		next()
-// 	} else {
-// 		// if they're not logged in, send them to the login page
-// 		res.redirect('/auth/login')
-// 	}
-// })
+// Router Middleware
+// Authorization middleware
+// If you have some resources that should be accessible to everyone regardless of loggedIn status, this middleware can be moved, commented out, or deleted. 
+router.use((req, res, next) => {
+	// checking the loggedIn boolean of our session
+	if (req.session.loggedIn) {
+		// if they're logged in, go to the next thing(thats the controller)
+		next()
+	} else {
+		// if they're not logged in, send them to the login page
+		res.redirect('/auth/login')
+	}
+})
 
 
 ////////////////////////////////////////
@@ -37,10 +37,14 @@ const Apod = require('../models/apodModel.js')
 router.get('/today', (req, res) => {
     axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3')
     .then(apodJson => {
-        console.log(apodJson.data)
-        res.send(apodJson.data)
+        // console.log(apodJson.data)
+        // res.send(apodJson.data)
 
-        
+        apod = apodJson.data
+
+        const username = req.session.username
+        const loggedIn = req.session.loggedIn
+        res.render('apods/nasa', { apod, username, loggedIn })
     })
     // .then(() => res.send('done'))
     .catch(() => {
@@ -53,12 +57,14 @@ router.get('/today', (req, res) => {
 router.get('/random', (req, res) => {
     axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=1')
         .then(apodJson => {
-            // console.log(apodJson.data[0])
-            // res.send(apodJson.data[0])
+            // console.log(apodJson.data)
+            // res.send(apodJson.data)
+
+            apod = apodJson.data[0]
 
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.render('apods/nasa', { apodJson, username, loggedIn })
+			res.render('apods/nasa', { apod, username, loggedIn })
             
         })
         // .then(() => res.send('done'))
@@ -159,7 +165,11 @@ router.get("/:id", (req, res) => {
 
     Apod.findById(id)
         .then(apod => {
-            res.json({ apod: apod })
+            //res.json({ apod: apod })
+
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			res.render('apods/show', { apod, username, loggedIn })
         })
         .catch(err => console.log(err))
 })

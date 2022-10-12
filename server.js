@@ -6,6 +6,7 @@ const express = require("express")
 const middleware = require('./utils/middleware')
 const ApodRouter = require('./controllers/apod')
 const UserRouter = require('./controllers/user')
+const CommentRouter = require('./controllers/commentControllers')
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
@@ -28,6 +29,7 @@ middleware(app)
 
 app.use('/auth', UserRouter)
 app.use('/apods', ApodRouter)
+app.use('/comments', CommentRouter)
 //app.use(reqLogger)
 
 app.get('/', (req, res) => {

@@ -25,7 +25,7 @@ const reqLogger = require('./utils/requestLogger')
 //    Routes      //
 ////////////////////
 
-app.use('/auth', UserRouter)
+app.use('/users', UserRouter)
 app.use('/apods', ApodRouter)
 app.use(reqLogger)
 

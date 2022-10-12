@@ -61,7 +61,7 @@ router.get('/random', (req, res) => {
 
 })
 
-// DATE SPECIFIC       date in form of yyyy-mm-dd
+// DATE SPECIFIC - date in form of yyyy-mm-dd
 router.get('/date/:id', (req, res) => {
     const id = req.params.id
     axios(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${id}&end_date=${id}`)
@@ -153,18 +153,18 @@ router.get("/:id", (req, res) => {
         .catch(err => console.log(err))
 })
 
-// // index that shows only the user's apods
-// router.get('/mine', (req, res) => {
-//     // destructure user info from req.session
-//     const { username, userId, loggedIn } = req.session
-// 	Apod.find({ owner: userId })
-// 		.then(apods => {
-// 			res.render('apods/index', { apods, username, loggedIn })
-// 		})
-// 		.catch(error => {
-// 			res.redirect(`/error?error=${error}`)
-// 		})
-// })
+// index that shows only the user's apods
+router.get('/mine', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	Apod.find({ owner: userId })
+		.then(apods => {
+			res.render('apods/index', { apods, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 
 //////////////////////////////////////////
 // Export the Router

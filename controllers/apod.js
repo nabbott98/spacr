@@ -39,6 +39,8 @@ router.get('/today', (req, res) => {
     .then(apodJson => {
         console.log(apodJson.data)
         res.send(apodJson.data)
+
+        
     })
     // .then(() => res.send('done'))
     .catch(() => {
@@ -51,12 +53,17 @@ router.get('/today', (req, res) => {
 router.get('/random', (req, res) => {
     axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=1')
         .then(apodJson => {
-            console.log(apodJson.data[0])
-            res.send(apodJson.data[0])
+            // console.log(apodJson.data[0])
+            // res.send(apodJson.data[0])
+
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			res.render('apods/nasa', { apodJson, username, loggedIn })
+            
         })
         // .then(() => res.send('done'))
         .catch(() => {
-            res.status(500).send('Something went wrong :(')
+            res.status(500).send('Something went wrong :( ')
         })
 
 })

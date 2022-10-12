@@ -1,0 +1,30 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<div class="container-md">
+    <article>
+        <h1>{{ apodJson.data[0].title }}</h1>
+        <img class="img-fluid" src="{{apodJson.data[0].hdurl}}" alt="{{apodJson.data[0].title}}">
+
+        {%- comment -%} <h3>Amount: {{ apod.amount }}</h3> {%- endcomment -%}
+        <h6>Date: {{apodJson.data[0].date}}</h6>
+        <p>{{apodJson.data[0].explanation}}</p>
+        
+        {% if apodJson.data[0].copyright %}
+            <h6>Copyright: {{apodJson.data[0].copyright}}</h6>
+        {% endif %}
+
+
+
+
+        {%- comment -%} {% if apod.owner == userId %}
+            <div class="btn-group">
+
+                <a href="/apods/{{ apod.id }}/edit" class="btn btn-primary">Edit</a>
+                <form action="/apods/{{ apod.id }}?_method=DELETE" method="POST">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </div>
+        {% endif %} {%- endcomment -%}
+    </article>
+</div>
+{% endblock %}

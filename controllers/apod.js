@@ -34,7 +34,7 @@ const Apod = require('../models/apodModel.js')
 ////////////////////////////////////////
 // Get request from NASA API
 router.get('/nasa', (req, res) => {
-    axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3')
+    axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=10')
     .then(apodJson => {
         console.log(apodJson.data)
         res.send(apodJson.data)

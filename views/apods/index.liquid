@@ -1,23 +1,15 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <h2 class="display-6">All Examples</h2>
+    <h2 class="display-6">All Astronomy Pictures</h2>
     <div class="row">
         {% for apod in apods %}
         <div class="card" style="width: 18rem;">
-            <h5 class="card-header">{{ apod.title }}</h5>
+            <img class="card-img-top" src="{{apod.url}}" alt="Card image cap">
+            <h5 class="card-text">{{ apod.title }}</h5>
             <div class="card-body">
-                <h5 class="card-title">
-                    Ready?: {{ apod.ready }}
-                </h5>
-                <p class="card-text">
-                    Body: {{ apod.body }}
-                </p>
-                <p class="card-text">
-                    Amount: {{ apod.amount }}
-                </p>
                 <a href="/apods/{{ apod.id }}" class="btn btn-info">
-                    View {{ apod.title }}
+                    View Image
                 </a>
             </div>
         </div>

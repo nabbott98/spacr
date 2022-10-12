@@ -3,6 +3,7 @@
 ////////////////////
 require("dotenv").config() // make env variables available
 const express = require("express")
+const middleware = require('./utils/middleware')
 const ApodRouter = require('./controllers/apod')
 const UserRouter = require('./controllers/user')
 const User = require("./models/user")
@@ -16,18 +17,18 @@ const app = require("liquid-express-views")(express())
 
 // const app = express()
 app.use(express.json()) // comment this out if I run into liquid issues
-const middleware = require('./utils/middleware')
+
 middleware(app)
-const reqLogger = require('./utils/requestLogger')
+//const reqLogger = require('./utils/requestLogger')
 
 
 ////////////////////
 //    Routes      //
 ////////////////////
 
-app.use('/users', UserRouter)
+app.use('/auth', UserRouter)
 app.use('/apods', ApodRouter)
-app.use(reqLogger)
+//app.use(reqLogger)
 
 app.get('/', (req, res) => {
     const { username, userId, loggedIn } = req.session

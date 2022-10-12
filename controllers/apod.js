@@ -64,7 +64,7 @@ router.get('/random', (req, res) => {
 // DATE SPECIFIC - date in form of yyyy-mm-dd
 router.get('/date/:id', (req, res) => {
     const id = req.params.id
-    axios(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&start_date=${id}&end_date=${id}`)
+    axios(`https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&start_date=${id}&end_date=${id}`)
     .then(apodJson => {
         console.log(apodJson.data[0])
         res.send(apodJson.data[0])
@@ -86,7 +86,11 @@ router.get("/", (req, res) => {
             // this is fine for initial testing
             // res.send(apods)
             // this the preferred method for APIs
-            res.json({ apods: apods })
+            //res.json({ apods: apods })
+            ////////// render //////////////
+            const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			res.render('apods/index', { apods, username, loggedIn })
         })
         .catch(err => console.log(err))
 })

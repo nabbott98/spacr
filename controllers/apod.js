@@ -116,14 +116,13 @@ router.get("/", (req, res) => {
 // create route -> gives the ability to create new apods
 router.post("/", (req, res) => {
 
+    req.body.owner = req.session.userId
     console.log('req.body', req.body)
-
-    let requestData = req.body
     Apod.create(req.body)
         .then(apod => {
             // send the user a '201 created' response, along with the new apod
             //res.status(201).json({ apod: apod.toObject() })
-            res.redirect("/apods/")
+            res.redirect("/apods")
         })
         .catch(error => console.log(error))
 })
@@ -174,8 +173,11 @@ router.delete("/:id", (req, res) => {
     Apod.findByIdAndRemove(id)
         // send a 204 if successful
         .then(() => {
-            res.sendStatus(204)
+            res.redirect('/apods')
         })
+        // .then(() => {
+        //     res.redirect('/apods')
+        // })
         // send the error if not
         .catch(err => res.json(err))
 })
@@ -187,12 +189,17 @@ router.get("/:id", (req, res) => {
 
     Apod.findById(id)
         .then(apod => {
-            // res.json({ apod: apod })
+            //res.json({ apod: apod })
 
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
             const userId = req.session.userId
+
+            console.log('')
             console.log(userId)
+            console.log(apod.owner)
+            console.log('')
+
 			res.render('apods/show', { apod, username, loggedIn, userId })
         })
         .catch(err => console.log(err))

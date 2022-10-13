@@ -57,8 +57,8 @@ router.get('/today', (req, res) => {
 router.get('/random', (req, res) => {
     axios('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=1')
         .then(apodJson => {
-            // console.log(apodJson.data)
-            // res.send(apodJson.data)
+            // console.log(apodJson.data[0])
+            // res.send(apodJson.data[0])
 
             apod = apodJson.data[0]
 
@@ -105,7 +105,8 @@ router.get("/", (req, res) => {
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
             const userId = req.session.userId
-            console.log(userId)
+            //console.log(userId)
+
 			res.render('apods/index', { apods, username, loggedIn, userId })
         })
         .catch(err => console.log(err))
@@ -114,19 +115,37 @@ router.get("/", (req, res) => {
 // POST request
 // create route -> gives the ability to create new apods
 router.post("/", (req, res) => {
-    // here, we'll get something called a request body
-    // inside this function, that will be referred to as req.body
-    // we'll use the mongoose model method `create` to make a new APOD document
+
     console.log('req.body', req.body)
 
     let requestData = req.body
     Apod.create(req.body)
         .then(apod => {
             // send the user a '201 created' response, along with the new apod
-            res.status(201).json({ apod: apod.toObject() })
+            //res.status(201).json({ apod: apod.toObject() })
+            res.redirect("/apods/")
         })
         .catch(error => console.log(error))
 })
+
+// router.post("/save", (req, res) => {
+//     // Pull date from request
+//     const date = '1995-11-14'//req.params.date
+//     console.log(date)
+//     // Call Api and insert date to url to pull that dates picture
+//     axios(`https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&start_date=${id}&end_date=${id}`)
+//         .then(apodJson => {
+//             // Console.log the data that comes back
+//             console.log(apodJson)
+
+//             // Use Apod model to create document with apodJson returned
+//             return Apod.create(apodJson)}) // or whatever from that data you want
+//         .then(
+//             // Redirect to index page
+//             res.redirect('/')
+//         )
+//         .catch(error => console.log(error))
+// })
 
 // PUT request
 // update route -> updates a specific apod

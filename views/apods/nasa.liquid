@@ -5,13 +5,52 @@
         <h1>{{ apod.title }}</h1>
         <img class="img-fluid" src="{{apod.hdurl}}" alt="{{apod.title}}">
 
-        <button type="button" class="btn btn-success" action="/apods" method="POST" data={{apod}} redirect="/apods">Add to 'The Galaxy'</button>
         <h6>Date: {{apod.date}}</h6>
         <p>{{apod.explanation}}</p>
         
         {% if apod.copyright %}
             <h6>Copyright: {{apod.copyright}}</h6>
         {% endif %}
+
+        <form action="/apods/" method="POST">
+            <fieldset>
+                <input
+                    class="hidden"
+                    name="date"
+                    value="{{apod.date}}"
+                >
+                <input
+                    class="hidden"
+                    name="explanation"
+                    value="{{apod.explanation}}"
+                >
+                <input
+                    class="hidden"
+                    name="hdurl"
+                    value="{{apod.hdurl}}"
+                >
+                <input
+                    class="hidden"
+                    name="apod.media_type"
+                    value="{{apod.media_type}}"
+                >
+                <input
+                    class="hidden"
+                    name="title"
+                    value="{{apod.title}}"
+                >
+                <input
+                    class="hidden"
+                    name="url"
+                    value="{{apod.url}}"
+                >
+            </fieldset>
+            <input
+                class="btn btn-success"
+                type="submit"
+                value="Add to 'The Galaxy'"
+            >
+        </form>
 
 
 

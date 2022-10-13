@@ -64,6 +64,7 @@ router.delete('/delete/:apodId/:commId', (req, res) => {
                     // here's another built in method
                     theComment.remove()
                     apod.save()
+                    console.log('--------------nick was here--------------')
                     res.redirect(`/apods/${apod.id}`)
                     // return the saved apod
                     // return apod.save()

@@ -44,7 +44,7 @@
             <div class="container-sm justify-content-center">
                 <div class="col-md-8 col-lg-6">
                     {% for comment in apod.comments %}
-                        {% render '../auth/comment.liquid', comment: comment, userId: userId, fruit: fruit %}
+                        {% render '../auth/comment.liquid', comment: comment, userId: userId, apod: apod %}
                     {% endfor %}
                 </div>
             </div>

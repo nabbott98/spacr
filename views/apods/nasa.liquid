@@ -5,7 +5,7 @@
         <h1>{{ apod.title }}</h1>
         <img class="img-fluid" src="{{apod.hdurl}}" alt="{{apod.title}}">
 
-        {%- comment -%} <h3>Amount: {{ apod.amount }}</h3> {%- endcomment -%}
+        <button type="button" class="btn btn-success" action="/apods" method="POST" data={{apod}} redirect="/apods">Add to 'The Galaxy'</button>
         <h6>Date: {{apod.date}}</h6>
         <p>{{apod.explanation}}</p>
         

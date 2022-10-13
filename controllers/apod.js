@@ -95,6 +95,7 @@ router.get("/", (req, res) => {
     // console.log("this is the request", req)
     // in our index route, we want to use mongoose model methods to get our data
     Apod.find({})
+        .populate("comments.author", "username")
         .then(apods => {
             // this is fine for initial testing
             // res.send(apods)
@@ -103,7 +104,9 @@ router.get("/", (req, res) => {
             ////////// render //////////////
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.render('apods/index', { apods, username, loggedIn })
+            const userId = req.session.userId
+            console.log(userId)
+			res.render('apods/index', { apods, username, loggedIn, userId })
         })
         .catch(err => console.log(err))
 })
@@ -165,11 +168,13 @@ router.get("/:id", (req, res) => {
 
     Apod.findById(id)
         .then(apod => {
-            //res.json({ apod: apod })
+            // res.json({ apod: apod })
 
             const username = req.session.username
 			const loggedIn = req.session.loggedIn
-			res.render('apods/show', { apod, username, loggedIn })
+            const userId = req.session.userId
+            console.log(userId)
+			res.render('apods/show', { apod, username, loggedIn, userId })
         })
         .catch(err => console.log(err))
 })

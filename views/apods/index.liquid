@@ -1,10 +1,10 @@
 {% layout 'layout.liquid'%}
 {% block content %}
 <div>
-    <h2 class="display-6">All Astronomy Pictures</h2>
+    <h2 class="display-6">The Galaxy</h2>
     <div class="row">
         {% for apod in apods %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 25rem;">
             <img class="card-img-top" src="{{ apod.url }}" alt="Image of {{ apod.title }}">
             <h5 class="card-text">{{ apod.title }}</h5>
             <div class="card-body">

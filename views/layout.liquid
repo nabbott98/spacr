@@ -21,7 +21,7 @@
 
 <body>
     <header>
-        {% render './video-bg.liquid' %}
+        {%- comment -%} {% render './video-bg.liquid' %} {%- endcomment -%}
         {% render './navbar.liquid', loggedIn: loggedIn, username: username, userId: userId %}
     </header>
 

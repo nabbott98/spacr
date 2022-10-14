@@ -182,11 +182,27 @@ router.delete("/:id", (req, res) => {
         .catch(err => res.json(err))
 })
 
+// index that shows only the user's apods
+router.get('/mine', (req, res) => {
+    // find the fruits, by ownership
+    Apod.find({ owner: req.session.userId })
+    // then display the fruits
+        .then(apods => {
+            const username = req.session.username
+            const loggedIn = req.session.loggedIn
+            const userId = req.session.userId
+
+            // res.status(200).json({ fruits: fruits })
+            res.render('apods/index', { apods, username, loggedIn, userId })
+        })
+    // or throw an error if there is one
+        .catch(error => res.json(error))
+})
+
 // SHOW request
 // read route -> finds and displays a single resource
 router.get("/:id", (req, res) => {
     const id = req.params.id
-
     Apod.findById(id)
         .then(apod => {
             //res.json({ apod: apod })
@@ -198,19 +214,6 @@ router.get("/:id", (req, res) => {
 			res.render('apods/show', { apod, username, loggedIn, userId })
         })
         .catch(err => console.log(err))
-})
-
-// index that shows only the user's apods
-router.get('/mine', (req, res) => {
-    // destructure user info from req.session
-    const { username, userId, loggedIn } = req.session
-	Apod.find({ owner: userId })
-		.then(apods => {
-			res.render('apods/index', { apods, username, loggedIn })
-		})
-		.catch(error => {
-			res.redirect(`/error?error=${error}`)
-		})
 })
 
 //////////////////////////////////////////

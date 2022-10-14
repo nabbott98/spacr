@@ -25,7 +25,7 @@ db.on('open', () => {
             axios.get('https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&count=10')
                 .then(function (response) {
                     // handle success
-                    console.log(response.data[1])
+                    console.log(response.data)
                     startApods = response
                 .catch(error => {
                     console.log(error)

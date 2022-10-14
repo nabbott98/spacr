@@ -195,11 +195,6 @@ router.get("/:id", (req, res) => {
 			const loggedIn = req.session.loggedIn
             const userId = req.session.userId
 
-            console.log('')
-            console.log(userId)
-            console.log(apod.owner)
-            console.log('')
-
 			res.render('apods/show', { apod, username, loggedIn, userId })
         })
         .catch(err => console.log(err))

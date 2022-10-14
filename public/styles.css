@@ -64,3 +64,35 @@ article > h6 {
   float: right;
   margin-top: -3rem;
 }
+
+.card {
+  border: 2px solid rgba(255, 255, 255, 0.516);
+  border-radius: 1.5rem;
+}
+
+.card:hover{
+  border-color: rgb(255, 255, 255);
+}
+
+.the-galaxy {
+
+  text-align: center;
+  /* display: inline-block; */
+  color: rgba(255, 255, 255, 0.358);
+  font-family: nasa-font;
+  -webkit-text-stroke: 0.1rem white;
+}
+
+/* .the-galaxy:hover {
+  color: white;
+} */
+
+.delete:hover{
+  background-color: red;
+  color: white;
+}
+
+.add-galaxy:hover{
+  background-color: blueviolet;
+  color: white;
+}

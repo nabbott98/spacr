@@ -1,18 +1,11 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<div class="container-md">
-    <article>
+<div class="container-md show-display">
+    <article class="article-show">
         <h1>{{ apod.title }}</h1>
-        <img class="img-fluid" src="{{apod.hdurl}}" alt="{{apod.title}}">
-
+        <img class="img-fluid img-display" src="{{apod.hdurl}}" alt="{{apod.title}}">
         <h6>Date: {{apod.date}}</h6>
-        <p>{{apod.explanation}}</p>
-        
-        {% if apod.copyright %}
-            <h6>Copyright: {{apod.copyright}}</h6>
-        {% endif %}
-
-        <form action="/apods/" method="POST">
+        <form action="/apods/" method="POST" class="galaxy-form">
             <fieldset>
                 <input
                     class="hidden"
@@ -46,11 +39,19 @@
                 >
             </fieldset>
             <input
-                class="btn btn-success"
+                class="btn btn-outline-light"
                 type="submit"
                 value="Add to 'The Galaxy'"
             >
         </form>
+
+        <p>{{apod.explanation}}</p>
+        
+        {% if apod.copyright %}
+            <h6>Copyright: {{apod.copyright}}</h6>
+        {% endif %}
+
+
 
 
 

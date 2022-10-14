@@ -9,3 +9,8 @@
 .hidden {
   display: none;
 }
+
+.cardImg {
+  max-height: 15rem;
+  object-fit: cover;
+}

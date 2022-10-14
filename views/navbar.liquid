@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" >
-<div class="container-fluid">
-    <a class="navbar-brand" href="/apods">SPACR</a>
-    {% if loggedIn %}
-    {%- comment -%}{%- endcomment -%}
-        <a class="nav-link text-light" href="/apods/mine">Hello {{username}}</a>
-    {% endif %}
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <a class="nav-link text-light" href="/apods">The Galaxy</a>
-        <a class="nav-link text-light" href="/apods/today">Today's Picture</a>
-        <a class="nav-link text-light" href="/apods/random">Random</a>
-        <a class="nav-link text-light" href="/apods/date">Date Search</a>
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/apods">SPACR</a>
         {% if loggedIn %}
-            {%- comment -%} <a class="nav-link text-light" href="/apods/new">New Apod</a>  {%- endcomment -%}
-            <a class="nav-link text-light ml-auto" href="/auth/logout">Log Out</a>
+        {%- comment -%}{%- endcomment -%}
+            <a class="nav-link text-light" href="/apods/mine">Hello {{username}}</a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <a class="nav-link text-light" href="/apods">The Galaxy</a>
+            <a class="nav-link text-light" href="/apods/today">Today's Picture</a>
+            <a class="nav-link text-light" href="/apods/random">Random</a>
+            <a class="nav-link text-light" href="/apods/date">Date Search</a>
+            {% if loggedIn %}
+                {%- comment -%} <a class="nav-link text-light" href="/apods/new">New Apod</a>  {%- endcomment -%}
+                <a class="nav-link text-light ml-auto" href="/auth/logout">Log Out</a>
 
-        {% else %}
-            <a class="nav-link text-light" href="/auth/signup">Sign Up</a>
-            <a class="nav-link text-light" href="/auth/login">Log In</a>
-        {% endif%}
+            {% else %}
+                <a class="nav-link text-light" href="/auth/signup">Sign Up</a>
+                <a class="nav-link text-light" href="/auth/login">Log In</a>
+            {% endif%}
+        </div>
     </div>
-</div>
 </nav> 

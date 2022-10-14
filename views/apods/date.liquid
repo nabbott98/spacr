@@ -1,0 +1,9 @@
+{% layout 'layout.liquid' %}
+
+{% block content %}
+<label id="date-label" for="start">Search pictrues by date:</label>
+
+<input id="date-input" type="date" id="start" name="trip-start"
+       value={{date}}
+       min="1995-20-01" max={{date}}>
+{% endblock %}

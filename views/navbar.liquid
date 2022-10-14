@@ -12,7 +12,7 @@
             <a class="nav-link text-light" href="/apods">The Galaxy</a>
             <a class="nav-link text-light" href="/apods/today">Today's Picture</a>
             <a class="nav-link text-light" href="/apods/random">Random</a>
-            <a class="nav-link text-light" href="/apods/date">Date Search</a>
+            {%- comment -%} <a class="nav-link text-light" href="/apods/date">Date Search</a> {%- endcomment -%}
             {% if loggedIn %}
                 {%- comment -%} <a class="nav-link text-light" href="/apods/new">New Apod</a>  {%- endcomment -%}
                 <a class="nav-link text-light ml-auto" href="/auth/logout">Log Out</a>

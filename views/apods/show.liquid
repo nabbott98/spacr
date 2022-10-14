@@ -5,7 +5,7 @@
 <div class="container-md show-display">
     <article class="article-show">
         <h1>{{ apod.title }}</h1>
-        <img class="img-fluid img-display" src="{{apod.hdurl}}" alt="{{apod.title}}">
+        <img class="img-fluid img-display" style="border-radius: 1.5rem" src="{{apod.hdurl}}" alt="{{apod.title}}">
 
         <h6>Date: {{apod.date}}</h6>
         {% if apod.owner == userId %}

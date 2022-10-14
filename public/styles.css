@@ -96,3 +96,14 @@ article > h6 {
   background-color: blueviolet;
   color: white;
 }
+
+#date-label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+  color: white;
+}
+
+#date-input, #date-label {
+  justify-content: center;
+  margin: .4rem 0;
+}

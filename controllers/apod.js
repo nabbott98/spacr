@@ -74,6 +74,15 @@ router.get('/random', (req, res) => {
 
 })
 
+
+// DATE SPECIFIC - date in form of yyyy-mm-dd
+router.get('/date', (req, res) => {
+    let date = new Date().toJSON().slice(0, 10)
+    console.log(date)
+    res.render('apods/date', {date})
+
+})
+
 // DATE SPECIFIC - date in form of yyyy-mm-dd
 router.get('/date/:id', (req, res) => {
     const id = req.params.id

@@ -6,11 +6,9 @@
             {% for apod in apods %}
             <div class="card" style="width: 25rem; height: 23rem; margin: 0.5rem; background-image: url('{{ apod.url }}');">
                 {%- comment -%} <img class="card-img-top cardImg" src="{{ apod.url }}" alt="Image of {{ apod.title }}" style="margin: 0.5rem 0 0.5rem 0;"> {%- endcomment -%}
-                <h5 class="card-text" style="color: white;">{{ apod.title }}</h5>
+                <h5 class="card-text" style="color: white; margin-top: 0.5rem;">{{ apod.title }}</h5>
                 <div class="card-body">
-                    <a href="/apods/{{ apod.id }}" class="btn btn-info">
-                        View Image
-                    </a>
+                    <a href="/apods/{{ apod.id }}" class=" stretched-link"></a>
                 </div>
             </div>
             {% endfor %}

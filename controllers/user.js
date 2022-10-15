@@ -18,6 +18,11 @@ router.get('/signup', (req, res) => {
 	res.render('auth/signup')
 })
 
+// GET to render the forgotten password form
+router.get('/forgot', (req, res) => {
+	res.render('auth/forgot')
+})
+
 // POST to send the signup info
 router.post('/signup', async (req, res) => {
 	// set the password to hashed password
@@ -29,7 +34,7 @@ router.post('/signup', async (req, res) => {
 	User.create(req.body)
 		// if created successfully redirect to login
 		.then((user) => {
-			res.redirect('/auth/login')
+			res.redirect('/')
 		})
 		// if an error occurs, send err
 		.catch((error) => {

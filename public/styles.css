@@ -125,6 +125,8 @@ article > h6 {
   border-right-style: hidden;
   border-left-style: hidden;
 
+  font-family: nasa-font;
+  font-size: 1.5rem;
 }
 
 .login-field::placeholder{
@@ -155,6 +157,8 @@ article > h6 {
   text-align: center;
   border: 0.15rem solid white;
   border-radius: 0;
+  font-family: nasa-font;
+  font-size: 1.3rem;
 }
 
 #login:hover{
@@ -201,9 +205,22 @@ article > h6 {
   margin-right: auto;
   left: 0;
   right: 0;
+  font-family: nasa-font;
+  font-size: 1.3rem;
 }
 
 #signup-forgot a {
   color: white;
   text-decoration: none;
+}
+
+#forgotten{
+  margin-top: 15vh;
+  color: white;
+  font-family: nasa-font;
+  text-align: center;
+}
+
+.space-cowboy{
+  font-size: 2rem;
 }

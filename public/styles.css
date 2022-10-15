@@ -112,7 +112,8 @@ article > h6 {
 
 .login-field{
   text-align: center;
-  width: 15vw;
+  width: 20vw;
+  min-width: 350px;
   color: white;
   background-color: transparent;
   border: 0.15rem solid white;
@@ -189,4 +190,20 @@ article > h6 {
   border-top: 0.4rem solid white;
   padding-top: 0.7rem;
   margin-top: -3.3rem;
+}
+
+#signup-forgot{
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+#signup-forgot a {
+  color: white;
+  text-decoration: none;
 }

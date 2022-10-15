@@ -39,9 +39,10 @@ router.post('/signup', async (req, res) => {
 
 // two login routes
 // get to render the login form
-router.get('/login', (req, res) => {
-	res.render('auth/login')
-})
+// ------- Not using a seperate login page---------- 1 extra unessesary click
+// router.get('/login', (req, res) => {
+// 	res.render('auth/login')
+// })
 // post to send the login info(and create a session)
 router.post('/login', async (req, res) => {
 	// console.log('request object', req)

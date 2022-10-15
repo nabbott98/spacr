@@ -75,12 +75,14 @@ article > h6 {
 }
 
 .the-galaxy {
-
   text-align: center;
   /* display: inline-block; */
   color: rgba(255, 255, 255, 0.358);
   font-family: nasa-font;
   -webkit-text-stroke: 0.1rem white;
+  font-size: 8rem;
+  margin-bottom: -3vh;
+  margin-top: -1vh;
 }
 
 /* .the-galaxy:hover {
@@ -109,14 +111,19 @@ article > h6 {
 }
 
 .login-field{
+  text-align: center;
   width: 15vw;
   color: white;
   background-color: transparent;
   border: 0.15rem solid white;
   border-radius: 0;
   margin-bottom: 2vh;
-  -webkit-transition: 0.5s;
+  /* -webkit-transition: 0.5s; */
   transition: 0.5s;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+
 }
 
 .login-field::placeholder{
@@ -125,12 +132,22 @@ article > h6 {
 }
 
 .login-field:focus{
-  outline: none;
   text-align: center;
   background-color: transparent;
-  border: 0.1rem solid white;
+  border: 0.15rem solid white;
   margin-bottom: 2vh;
   color: white;
+
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+
+  outline:0; /* I have also tried outline:none */
+  -webkit-box-shadow: none;
+}
+
+.login-field:focus::placeholder {
+  color: transparent;
 }
 
 #login{

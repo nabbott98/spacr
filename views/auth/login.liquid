@@ -1,19 +1,20 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 
-<h1 class="login-header">SPACR</h1>
-<h3 class="login-header">Astronomy pictures of the day from NASA Open API</h3>
-
-<div style="text-align: center; margin-top: 20vh;">
+<div style="text-align: center">
+    <h1 class="login-header" id="login-name">spacr</h1>
+    <h3 class="login-header" id="login-desc">Astronomy pictures of the day from NASA Open API</h3>
+</div>
+<div style="text-align: center; margin-top: 10vh;">
     <div id="login-form" style="display: inline-block; text-align: center">
         <form action="/auth/login" method="POST" style="justify-content: center;">
             <fieldset>
                 {%- comment -%} <label class="form-label" style="background-color:rgba(0,0,0,0);">Username: </label> {%- endcomment -%}
-                <input type="text" name="username" placeholder="username" class="form-control login-field" required>
+                <input type="text" name="username" placeholder="USERNAME" class="form-control login-field" required>
                 {%- comment -%} <label class="form-label">Password</label> {%- endcomment -%}
-                <input type="password" name="password" placeholder="enter password" class="form-control login-field" required>
+                <input type="password" name="password" placeholder="PASSWORD" class="form-control login-field" required>
             </fieldset>
-            <input type="submit" value="Log In" class="btn btn-outline-light" id="login">
+            <input type="submit" value="LOGIN" class="btn btn-outline-light" id="login">
         </form>
     </div>
 </div>

@@ -112,7 +112,8 @@ article > h6 {
   width: 15vw;
   color: white;
   background-color: transparent;
-  border: 0.1rem solid white;
+  border: 0.15rem solid white;
+  border-radius: 0;
   margin-bottom: 2vh;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -134,6 +135,8 @@ article > h6 {
 
 #login{
   text-align: center;
+  border: 0.15rem solid white;
+  border-radius: 0;
 }
 
 #login:hover{
@@ -149,4 +152,24 @@ article > h6 {
 
 #login-form{
   justify-content: center;
+}
+
+#login-name{
+  font-size: 15rem;
+  display: inline;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.358);
+  font-family: nasa-font;
+  -webkit-text-stroke: 0.3rem white;
+}
+
+#login-name:hover{
+  color: white;
+}
+
+#login-desc{
+  font-size: 2.5rem;
+  border-top: 0.4rem solid white;
+  padding-top: 0.7rem;
+  margin-top: -3.3rem;
 }

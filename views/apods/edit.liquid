@@ -1,9 +1,9 @@
 {% layout 'layout.liquid' %}
 {% block content %}
 <div class="container-sm">
-    <form action="/apods" method="POST">
+    <form action="/apods/{{apod.id}}?_method=PUT" method="POST" style="color: white;">
         <fieldset>
-            <legend>Create New Example</legend>
+            <legend>Edit APOD</legend>
             <label class="form-label">Title: </label>
             <input 
                 type="text" 
@@ -12,32 +12,32 @@
                 value="{{ apod.title }}"
                 class="form-control"
             >
-            <label class="form-label">Body:</label>
+            <label class="form-label">Explanation:</label>
             <input 
                 type="text" 
-                name="body" 
-                placeholder="{{ apod.body }}" 
-                value="{{ apod.body }}" 
+                name="explanation" 
+                placeholder="{{ apod.explanation }}" 
+                value="{{ apod.explanation }}" 
                 class="form-control"
             >
-            <label class="form-label">Amount:</label>
+            <label class="form-label">Url:</label>
             <input 
-                type="number" 
-                name="amount"
-                value="{{ apod.amount }}"
+                type="text" 
+                name="url" 
+                placeholder="{{ apod.url }}" 
+                value="{{ apod.url }}" 
                 class="form-control"
             >
-            <label class="form-label">Ready:</label>
+            <label class="form-label">HDUrl:</label>
             <input 
-                type="checkbox" 
-                name="ready" 
-                class="form-check-input"
-                {% if apod.ready %}
-                    checked
-                {% endif %}
+                type="text" 
+                name="HDurl" 
+                placeholder="{{ apod.hdurl }}" 
+                value="{{ apod.hdurl }}" 
+                class="form-control"
             >
         </fieldset>
-        <input type="submit" value="Edit Example" class="btn btn-success">
+        <input type="submit" value="Edit Picture Entry" class="btn btn-outline-light edit" style="margin-top: 0.5rem;">
     </form>
 </div>
 {% endblock %}

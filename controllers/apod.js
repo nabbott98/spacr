@@ -74,7 +74,6 @@ router.get('/random', (req, res) => {
 
 })
 
-
 // // DATE SPECIFIC - date in form of yyyy-mm-dd
 // router.get('/date', (req, res) => {
 //     let date = new Date().toJSON().slice(0, 10)
@@ -140,6 +139,27 @@ router.post("/", (req, res) => {
         })
         .catch(error => console.log(error))
 })
+
+// GET request to show the update page
+router.get("/edit/:id", (req, res) => {
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    const userId = req.session.userId
+
+    const apodId = req.params.id
+
+    Apod.findById(apodId)
+        // render the edit form if there is a apod
+        .then(apod => {
+            res.render('apods/edit', { apod, username, loggedIn, userId })
+        })
+        // redirect if there isn't
+        .catch(err => {
+            res.redirect(`/error?error=${err}`)
+        })
+    // res.send('edit page')
+})
+
 // PUT request
 // update route -> updates a specific apod
 router.put("/:id", (req, res) => {
@@ -150,12 +170,19 @@ router.put("/:id", (req, res) => {
     // we're using findByIdAndUpdate, which needs three arguments
     // it needs an id, it needs the req.body, and whether the info is new
     Apod.findByIdAndUpdate(id, req.body, { new: true })
-        .then(apod => {
-            console.log('the apod from update', apod)
-            // update success is called '204 - no content'
-            res.sendStatus(204)
-        })
-        .catch(err => console.log(err))
+    .then(apod => {
+        if (apod.owner == req.session.userId) {
+            // must return the results of this query
+            return apod.updateOne(req.body)
+        } else {
+            res.sendStatus(401)
+        }
+    })
+    .then(() => {
+        // console.log('returned from update promise', data)
+        res.redirect(`/apods/${id}`)
+    })
+    .catch(err => res.redirect(`/error?error=${err}`))
 })
 
 // DELETE request
@@ -178,15 +205,15 @@ router.delete("/:id", (req, res) => {
 
 // index that shows only the user's apods
 router.get('/mine', (req, res) => {
-    // find the fruits, by ownership
+    // find the apods, by ownership
     Apod.find({ owner: req.session.userId })
-    // then display the fruits
+    // then display the apods
         .then(apods => {
             const username = req.session.username
             const loggedIn = req.session.loggedIn
             const userId = req.session.userId
 
-            // res.status(200).json({ fruits: fruits })
+            // res.status(200).json({ apods: apods })
             res.render('apods/index', { apods, username, loggedIn, userId })
         })
     // or throw an error if there is one

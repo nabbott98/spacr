@@ -94,6 +94,16 @@ article > h6 {
   color: white;
 }
 
+.edit:hover{
+  background-color: rgb(255, 153, 0);
+  color: white;
+}
+
+.comment:hover{
+  background-color: blueviolet;
+  color: white;
+}
+
 .add-galaxy:hover{
   background-color: blueviolet;
   color: white;

@@ -10,8 +10,8 @@
         <h6>Date: {{apod.date}}</h6>
         {% if apod.owner == userId %}
             <div class="btn-group galaxy-form">
-
-                {%- comment -%} <a href="/apods/{{ apod.id }}/edit" class="btn btn-primary">Edit</a> {%- endcomment -%}
+                {%- comment -%} first button will send us to the edit page {%- endcomment -%}
+                <a href="/apods/edit/{{ apod.id }}" class="btn btn-outline-light edit" style="margin-right: 0.5rem; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">Edit</a>
                 <form action="/apods/{{ apod.id }}?_method=DELETE" method="POST">
                     <input type="submit" value="Remove from 'The Galaxy" class="delete btn btn-outline-light">
                 </form>
@@ -23,15 +23,6 @@
         {% if apod.copyright %}
             <h6>Copyright: {{apod.copyright}}</h6>
         {% endif %}
-        {%- comment -%} {% if apod.owner == userId %}
-            <div class="btn-group">
-
-                <a href="/apods/{{ apod.id }}/edit" class="btn btn-primary">Edit</a>
-                <form action="/apods/{{ apod.id }}?_method=DELETE" method="POST">
-                    <input type="submit" value="Delete" class="btn btn-danger">
-                </form>
-            </div>
-        {% endif %}  {%- endcomment -%}
     </article>
     <h4>Comments</h4>
         <hr>
@@ -43,7 +34,7 @@
                         <label class="form-label">comment:</label>
                         <input class="form-control" type="text" placeholder="enter your comment..." name="note" required>
                     </fieldset>
-                    <input class="btn btn-success" type="submit" value="add comment">
+                    <input class="btn btn-outline-light comment" type="submit" value="add comment" style="margin-top: 0.5rem;">
                 </form>
             </div>
         {% else %}

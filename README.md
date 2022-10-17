@@ -2,11 +2,12 @@
 Full stack application using NASA API to pull space images and display them with additional user functionality
 
 ## Overview
-SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3 and  as a stretch goal Earth Images [EPIC](https://epic.gsfc.nasa.gov/)
+SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3 and  as a stretch goal Earth Images 
 [NASA Open API](https://api.nasa.gov/)
-Users will see the 20 most recent pictures and be able to store them in the database by favoriting them
+Users will see 20 pictures on the index screen to start and any additional images that they or other users have added by using the app
 
-
+## Approach
+I was inspired to create an application based around a NASA API given my entusiasm for space and astronomy. I found that NASA had an api that has an astronomy picture of the day and decided I wanted to make an app based around that. First I setup a working backend API using mongodb, mongoose, express, and axios. I then went an built the front end using liquidjs and bootstrap. 
 
 ## Technologies used
 MongoDB - NoSQL Database
@@ -23,34 +24,44 @@ Models
   - User
   - Daily picture IMG
     - Comment
-  - EPIC IMG - stretch goal
-    - Comment
-
 
 Incorporated API's
 - NASA APOD API
-- NASA EPIC API - stretch goal
-
 
 ## User Stories
 As a user, I want the ability to... 
   - sign up.
-  - sign in. https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3
+  - sign in. 
   - change my password. 
   - sign out. 
   - view NASA Astronomy Picture of the Day images. 
-  - "favorite" photos of the users choosing. 
-  - view all of my favorite photos as cards. 
-  - view all individual favorited images. 
-  - unfavorite images. 
-  - add older images to database through search bar.
+  - view all of my added images
+  - view all individual added images. 
+  - unadd images. 
   - view images others have added to the database. 
-  - favorite images that others have added.
 
 ## Wireframes / Screenshots
 ![SPACR Wireframe](/planning/SPACR-wireframe.png)
 ## Entity Relationship Diagrams
 ![SPACR ERD](/planning/ERD.png)
+
+## RESTFUL Routes for personal db
+| Route Name | URL | HTTP Verb | Description |
+| ----------- | ----------- | ----------- | ----------- |
+| INDEX | /apods | GET | Display a list of all astronomy pictures |
+| USER INDEX | /apods/mine | GET | Display a list of all astronomy pictures |
+| SHOW | /apods/:id | GET | Display specific astronomy picture |
+| CREATE | /apods | POST | Create new astronomy picture then reroute |
+| UPDATE | /apods/:id | PUT | Update apod |
+| DESTROY | /apods/:id | DELETE | Delete astronomy picture then reroute |
+
+## RESTFUL Routes for accessing NASA APOD API
+| Route Name | URL | HTTP Verb | Description |
+| ----------- | ----------- | ----------- | ----------- |
+| INDEX | /apods/random | GET | Returns a random APOD |
+| INDEX | /apods/today | GET | Returns todays APOD |
+| INDEX | /apods/date/:date | GET | Returns APOD from specified date (:date format: YYYY-MM-DD) |
+
 
 ## Weekly Schedule
 Monday: Build out database models, play around with NASA api to get more comfortable

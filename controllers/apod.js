@@ -75,20 +75,26 @@ router.get('/random', (req, res) => {
 })
 
 
-// DATE SPECIFIC - date in form of yyyy-mm-dd
-router.get('/date', (req, res) => {
-    let date = new Date().toJSON().slice(0, 10)
-    console.log(date)
-    res.render('apods/date', {date})
-})
+// // DATE SPECIFIC - date in form of yyyy-mm-dd
+// router.get('/date', (req, res) => {
+//     let date = new Date().toJSON().slice(0, 10)
+//     console.log(date)
+//     res.render('apods/date', {date})
+// })
 
 // DATE SPECIFIC - date in form of yyyy-mm-dd
 router.get('/date/:id', (req, res) => {
     const id = req.params.id
     axios(`https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&start_date=${id}&end_date=${id}`)
     .then(apodJson => {
-        console.log(apodJson.data[0])
-        res.send(apodJson.data[0])
+        //console.log(apodJson.data[0])
+        //res.send(apodJson.data[0])
+
+        apod = apodJson.data[0]
+        const username = req.session.username
+		const loggedIn = req.session.loggedIn
+
+        res.render('apods/nasa', { apod, username, loggedIn })
     })
     // .then(() => res.send('done'))
     .catch(() => {
@@ -134,26 +140,6 @@ router.post("/", (req, res) => {
         })
         .catch(error => console.log(error))
 })
-
-// router.post("/save", (req, res) => {
-//     // Pull date from request
-//     const date = '1995-11-14'//req.params.date
-//     console.log(date)
-//     // Call Api and insert date to url to pull that dates picture
-//     axios(`https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&start_date=${id}&end_date=${id}`)
-//         .then(apodJson => {
-//             // Console.log the data that comes back
-//             console.log(apodJson)
-
-//             // Use Apod model to create document with apodJson returned
-//             return Apod.create(apodJson)}) // or whatever from that data you want
-//         .then(
-//             // Redirect to index page
-//             res.redirect('/')
-//         )
-//         .catch(error => console.log(error))
-// })
-
 // PUT request
 // update route -> updates a specific apod
 router.put("/:id", (req, res) => {

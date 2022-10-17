@@ -4,7 +4,7 @@
         <h2 class="display-1 the-galaxy">The Galaxy</h2>
         <div class="row" style="justify-content: center;">
             {% for apod in apods %}
-            <div class="card" style="width: 25rem; height: 23rem; margin: 0.5rem; background-image: url('{{ apod.url }}');">
+            <div class="card" style="width: 18rem; height: 13rem; margin: 0.5rem; background-image: url('{{ apod.url }}');   background-position: center;">
                 {%- comment -%} <img class="card-img-top cardImg" src="{{ apod.url }}" alt="Image of {{ apod.title }}" style="margin: 0.5rem 0 0.5rem 0;"> {%- endcomment -%}
                 <h5 class="card-text" style="color: white; margin-top: 0.5rem;">{{ apod.title }}</h5>
                 <div class="card-body">

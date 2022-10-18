@@ -54,10 +54,10 @@ router.delete('/delete/:apodId/:commId', (req, res) => {
             // get the comment
             // subdocs have a built in method that you can use to access specific subdocuments when you need to.
             // this built in method is called .id()
-            const theComment = apod.comments.id(commId)
+            const theComment = apod.comments.id(commId) // good use of id method here
             console.log('this is the comment that was found', theComment)
             // make sure the user is logged in
-            if (req.session.loggedIn) {
+            if (req.session.loggedIn) { // consolidate these ifs with an 'and' && because your errors are the same
                 // only let the author of the comment delete it
                 if (theComment.author == req.session.userId) {
                     // find some way to remove the comment

@@ -7,7 +7,7 @@ const middleware = require('./utils/middleware')
 const ApodRouter = require('./controllers/apod')
 const UserRouter = require('./controllers/user')
 const CommentRouter = require('./controllers/commentControllers')
-const User = require("./models/user")
+const User = require("./models/user") // remove or comment out unused imports
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
 

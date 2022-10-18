@@ -2,7 +2,7 @@
 Full stack application using NASA API to pull space images and display them with additional user functionality
 
 ## Overview
-SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3 and  as a stretch goal Earth Images 
+SPACR is a full stack application showing images from NASA's [Astronomy Picture of the Day API](https://apod.nasa.gov/apod/astropix.html) https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3 and as a stretch goal Earth Images 
 [NASA Open API](https://api.nasa.gov/)
 Users will see 20 pictures on the index screen to start and any additional images that they or other users have added by using the app
 
@@ -61,13 +61,3 @@ As a user, I want the ability to...
 | INDEX | /apods/random | GET | Returns a random APOD |
 | INDEX | /apods/today | GET | Returns todays APOD |
 | INDEX | /apods/date/:date | GET | Returns APOD from specified date (:date format: YYYY-MM-DD) |
-
-
-## Weekly Schedule
-Monday: Build out database models, play around with NASA api to get more comfortable
-Tuesday: Finish backend API
-Wednesday: Start building out Views 
-Thursday: Views
-Friday: Views and bug fixing 
-
-return number of likes as a virtual

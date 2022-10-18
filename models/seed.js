@@ -3,7 +3,7 @@
 ///////////////////////////////////////
 const mongoose = require('./connection')
 const Apod = require('./apodModel')
-const axios = require('axios')
+const axios = require('axios') // remove or comment out unused imports
 const express = require('express')
 const app = require("liquid-express-views")(express())
 // const app = express()

@@ -4,8 +4,8 @@
 <form form action="/apods/date/{{#date-input.value}}" method="GET">
        <fieldset>
               <label id="date-label" for="start">Search pictrues by date:</label>
-              <input id="date-input" type="date" id="start" name="trip-start"
-                     value={{date}}
+              <input id="date-input" type="date" id="start" name="trip-start" {%- comment -%} duplicate keys of id ! {%- endcomment -%}
+                     value={{date}} 
                      min="1995-20-01" max={{date}}>
        </fieldset>
 </form>

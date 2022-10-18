@@ -75,7 +75,7 @@ router.get('/random', (req, res) => {
 })
 
 // // DATE SPECIFIC - date in form of yyyy-mm-dd
-// router.get('/date', (req, res) => {
+// router.get('/date', (req, res) => { // AKK - remove Zombie code here
 //     let date = new Date().toJSON().slice(0, 10)
 //     console.log(date)
 //     res.render('apods/date', {date})
@@ -83,7 +83,7 @@ router.get('/random', (req, res) => {
 
 // DATE SPECIFIC - date in form of yyyy-mm-dd
 router.get('/date/:id', (req, res) => {
-    const id = req.params.id
+    const id = req.params.id // is id a good variable name for this route ? can't help but feel something related to the actual data being passed would be better ( unless it is an actual document id )
     axios(`https://api.nasa.gov/planetary/apod?api_key=NKq9cgpepLxEaEBsOSr9zXghCayrcpqkIdOjBVK3&start_date=${id}&end_date=${id}`)
     .then(apodJson => {
         //console.log(apodJson.data[0])
@@ -96,7 +96,7 @@ router.get('/date/:id', (req, res) => {
         res.render('apods/nasa', { apod, username, loggedIn })
     })
     // .then(() => res.send('done'))
-    .catch(() => {
+    .catch(() => {// pass error here so we can look at it for debugging 
         res.status(500).send('Something went wrong :(')
     })
 
@@ -108,7 +108,7 @@ router.get("/", (req, res) => {
     // console.log("this is the request", req)
     // in our index route, we want to use mongoose model methods to get our data
     Apod.find({})
-        .populate("comments.author", "username")
+        .populate("comments.author", "username")// good use of populate
         .then(apods => {
             // this is fine for initial testing
             // res.send(apods)
@@ -248,7 +248,7 @@ module.exports = router
 
 
 //////////////////////////////////////////
-// Example routes
+// Example routes // AKK - a lot of zombie code below, consider cleaning up 
 //////////////////////////////////////////
 
 // // index ALL

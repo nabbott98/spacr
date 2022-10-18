@@ -8,7 +8,7 @@ const mongoose = require('./connection')
 const { Schema } = mongoose
 
 // comment schema
-const commentSchema = new Schema({
+const commentSchema = new Schema({ // Schema/ Class declarations need to be capitalized for best practices
     note: {
         type: String,
         required: true
